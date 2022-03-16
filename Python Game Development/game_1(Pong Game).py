@@ -55,6 +55,25 @@ ob2.shape("square")
 ob2.shapesize(stretch_len=1,stretch_wid=5)
 ob2.color("red")
 ob2.goto(-50,0)
+
+#score 
+score_a=0
+score_b=0
+
+
+# score board
+
+pen=turtle.Turtle();
+pen.penup();
+pen.speed(0)
+pen.color("white")
+pen.hideturtle()
+pen.goto(0,260)
+pen.shapesize()
+pen.write("Player A : {0}   Player B : {1} ".format(score_a,score_b), align="center", font=("Courier",24,"normal"))
+
+
+
 #movement of paddles
 def paddle_a_up():
     y=paddle_a.ycor()
@@ -87,6 +106,7 @@ wn.onkeypress(paddle_b_down,"Down")
 #main gameloop
 
 while True :
+
     wn.update()
     # ball movement 
     ball.setx(ball.xcor()+ball.dx)
@@ -105,11 +125,19 @@ while True :
         ball.setx(390)
         ball.goto(0,0)
         ball.dx*=-1
+        score_a+=1
+        pen.clear()
+        pen.write("Player A : {0}   Player B : {1} ".format(score_a,score_b), align="center", font=("Courier",24,"normal"))
+
 
     if ball.xcor()<-390:
         ball.setx(-390)
         ball.goto(0,0)
         ball.dx*=-1
+        score_b+=1
+        pen.clear()
+        pen.write("Player A : {0}   Player B : {1} ".format(score_a,score_b), align="center", font=("Courier",24,"normal"))
+
 
     # paddle and ball collisions 
     if (ball.xcor()>=340 and ball.xcor()<=350) and (ball.ycor()>=paddle_b.ycor()-50 and ball.ycor()<=paddle_b.ycor()+50):
@@ -128,3 +156,4 @@ while True :
 
     paddle_a.sety(ball.ycor())
 # score board 
+# this is a opne player game 
