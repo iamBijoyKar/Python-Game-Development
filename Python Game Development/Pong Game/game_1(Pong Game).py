@@ -56,7 +56,7 @@ ob2.shapesize(stretch_len=1,stretch_wid=5)
 ob2.color("red")
 ob2.goto(-50,0)
 
-#score 
+# initial score
 score_a=0
 score_b=0
 
@@ -75,6 +75,7 @@ pen.write("Player A : {0}   Player B : {1} ".format(score_a,score_b), align="cen
 
 
 #movement of paddles
+
 def paddle_a_up():
     y=paddle_a.ycor()
     y+=20
